@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="notebook">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="contact" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="firstname"/>
+              <xs:element type="xs:string" name="surname"/>
+              <xs:element type="xs:string" name="lastname"/>
+              <xs:element name="address">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:short" name="postcode"/>
+                    <xs:element type="xs:string" name="city"/>
+                    <xs:element type="xs:string" name="street"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:date" name="birthdate"/>
+              <xs:element name="phone" maxOccurs="unbounded" minOccurs="0">
+                <xs:simpleType name="phoneType">
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="home" />
+                        <xs:enumeration value="mobile" />
+                        <xs:enumeration value="work" />
+                    </xs:restriction>
+                </xs:simpleType>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:int">
+                      <xs:attribute type="phoneType" name="type" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+
+            <xs:simpleType name="contactType">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="family" />
+                    <xs:enumeration value="classmate" />
+                    <xs:enumeration value="colleage" />
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:attribute type="contactType" name="type" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
+<notebook>
+    <contact type="family">
+        <firstname>Valentin</firstname>
+        <surname>Kirilov</surname>
+        <lastname>Kirilov</lastname>
+        <address>
+            <postcode>1220</postcode>
+            <city>CITY</city>
+            <street>Street Number</street>
+        </address>
+        <birthdate>1994-10-13</birthdate>
+        <phone>123456</phone>
+        <phone type="home">123456</phone>
+        <phone type="work">123456</phone>
+        <phone type="mobile">123456</phone>
+    </contact>
+    <contact type="classmate">
+        <firstname>John</firstname>
+        <surname>Snow</surname>
+        <lastname>White</lastname>
+        <address>
+            <postcode>1220</postcode>
+            <city>CITY</city>
+            <street>Street Number</street>
+        </address>
+        <birthdate>1994-10-13</birthdate>
+    </contact>
+</notebook>

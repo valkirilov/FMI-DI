@@ -1,0 +1,40 @@
+count=1
+
+for i in 5 1 4 2
+do
+    echo "Number: " $i
+    for j
+    do
+        if test $i -ge $#
+        then
+            echo "Case 1"
+            count=` expr $count \* $i`
+            echo "Count: " $count
+            echo $count $j >> f1
+            echo $j $f1
+        else
+            echo "Case 2"
+            while true
+            do
+                echo $*
+                break 3
+            done
+        fi
+    done
+done
+
+read k1 k2
+echo $k1 $k2
+
+echo $f1
+
+while cat f1 | grep $k2
+do
+    set $k1 $count
+    shift
+    echo $2
+    echo $1 $i
+    exit
+done
+
+echo FIN

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE biography [
+    <!ELEMENT biography (person*)>
+
+    <!ELEMENT person (name, surname, family, birthdate, birthplace, citizenship, address, phone, email, education*)>
+
+    <!ELEMENT name (#PCDATA)>
+    <!ELEMENT surname (#PCDATA)>
+    <!ELEMENT family (#PCDATA)>
+    <!ELEMENT birthdate (#PCDATA)>
+    <!ELEMENT birthplace (#PCDATA)>
+    <!ELEMENT citizenship (#PCDATA)>
+
+    <!ELEMENT address (country, town, street, street-number)>
+    <!ELEMENT country (#PCDATA)>
+    <!ELEMENT town (#PCDATA)>
+    <!ELEMENT street (#PCDATA)>
+    <!ELEMENT street-number (#PCDATA)>
+
+    <!ELEMENT phone (#PCDATA)>
+    <!ELEMENT email (#PCDATA)>
+
+    <!ELEMENT education (univeristy, speciality, graduation-year)>
+    <!ATTLIST education type CDATA #REQUIRED>
+    <!ELEMENT univeristy (#PCDATA)>
+    <!ELEMENT speciality (#PCDATA)>
+    <!ELEMENT graduation-year (#PCDATA)>
+]>
+
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="biography">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="person" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:element name="name" type="xs:string" />
+                        <xs:element name="surname" type="xs:string" />
+                        <xs:element name="family" type="xs:string" />
+                        <xs:element name="birthdate" type="xs:date" />
+                        <xs:element name="birthplace" type="xs:string" />
+                        <xs:element name="citizenship" type="xs:string" />
+                        <xs:element name="address">
+                            <xs:complexType>
+                                <xs:element name="country" type="xs:string" />
+                                <xs:element name="town" type="xs:string" />
+                                <xs:element name="street" type="xs:string" />
+                                <xs:element name="street-number" type="xs:integer" />
+
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="phone" type="xs:integer" />
+                        <xs:element name="email" type="xs:integer" />
+                        <xs:element name="education" minOccurs="0" maxOccurs="unbounded">
+                            <xs:simpleType name="educationType">
+                                <xs:restiction base="xs:string">
+                                    <xs:enumeration value="school" />
+                                    <xs:enumeration value="high-school" />
+                                    <xs:enumeration value="bachelor" />
+                                    <xs:enumeration value="master" />
+                                    <xs:enumeration value="doctor" />
+                                </xs:restiction>
+                            </xs:simpleType>
+                            <xs:attribute name="type" type="educationType" />
+                            <xs:compelexType>
+                                <xs:element name="university" type="xs:string" />
+                                <xs:element name="scpeciality" type="xs:string" />
+                                <xs:element name="graduation-year" type="xs:integer" />
+                            </xs:compelexType>
+                        </xs:element>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+
+<biography>
+    <person>
+        <name>Valentin</name>
+        <surname>Kirilov</surname>
+        <family>Kirilov</family>
+        <birthdate>1994-10-13</birthdate>
+        <birthplace>Sofia</birthplace>
+        <citizenship>Bulgarian</citizenship>
+        <address>
+            <country>Bulgaria</country>
+            <town>Sofia</town>
+            <street>Strret3</street>
+            <street-number>3</street-number>
+        </address>
+        <phone>123456789</phone>
+        <email>val.kirilov@gmail.com</email>
+        <education type="school">
+                <univeristy>15 SOU</univeristy>
+                <speciality>General</speciality>
+                <graduation-year>2008</graduation-year>
+            </education>
+        <education type="high-school">
+            <univeristy>TUES</univeristy>
+            <speciality>Software Engineering</speciality>
+            <graduation-year>2013</graduation-year>
+        </education>
+        <education type="bachelor">
+            <univeristy>Sofia University</univeristy>
+            <speciality>Software Engineering</speciality>
+            <graduation-year>1234</graduation-year>
+        </education>
+    </person>
+    <person>
+            <name>Milena</name>
+            <surname>Kirilova</surname>
+            <family>Kirilova</family>
+            <birthdate>2002-09-08</birthdate>
+            <birthplace>Sofia</birthplace>
+            <citizenship>Bulgarian</citizenship>
+            <address>
+                <country>Bulgaria</country>
+                <town>Sofia</town>
+                <street>Strret3</street>
+                <street-number>3</street-number>
+            </address>
+            <phone>123456789</phone>
+            <email>milena.kirilova8@gmail.com</email>
+            <education type="school">
+                <univeristy>15 SU</univeristy>
+                <speciality>General</speciality>
+                <graduation-year>2015</graduation-year>
+            </education>
+        </person>
+</biography>

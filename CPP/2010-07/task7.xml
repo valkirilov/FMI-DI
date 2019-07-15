@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE book [
+    <!ELEMENT book (title, author, character*)>
+    <!ATTLIST book isbn CDATA #REQUIRED>
+    <!ELEMENT title (#PCDATA)>
+    <!ELEMENT author (#PCDATA)>
+    <!ELEMENT character (name, friend-of, since, qualification)>
+
+    <!ELEMENT name (#PCDATA)>
+    <!ELEMENT friend-of (#PCDATA)>
+    <!ELEMENT since (#PCDATA)>
+    <!ELEMENT qualification (#PCDATA)>
+]>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="book">
+    <xs:attribute name="book" type="xs:integer"/>
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="title" type="xs:string" />
+            <xs:element name="author" type="xs:string" />
+            <xs:element name="character">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="name" type="xs:string" />
+                        <xs:element name="friend-of" type="xs:string" />
+                        <xs:element name="since" type="xs:date" />
+                        <xs:element name="qualification" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<book isbn="083642546">
+    <title>Book Title</title>
+    <author>Author name</author>
+    <character>
+        <name>Name 1</name>
+        <friend-of>Koki</friend-of>
+        <since>1970-01-01</since>
+        <qualification>qualification</qualification>
+    </character>
+    <character>
+        <name>Koki</name>
+        <friend-of>Name 2</friend-of>
+        <since>1994-10-18</since>
+        <qualification>qualification</qualification>
+    </character>
+</book>

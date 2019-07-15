@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE notebook [
+    <!ELEMENT notebook (contact*)>
+
+    <!ELEMENT contact (firstname, surname, lastname, address, birthdate, phone*)>
+    <!ATTLIST contact type (family|classmate|etc) #IMPLIED>
+
+    <!ELEMENT firstname (#PCDATA)>
+    <!ELEMENT surname (#PCDATA)>
+    <!ELEMENT lastname (#PCDATA)>
+
+    <!ELEMENT address (postcode, city, street)>
+    <!ELEMENT postcode (#PCDATA)>
+    <!ELEMENT city (#PCDATA)>
+    <!ELEMENT street (#PCDATA)>
+
+    <!ELEMENT birthdate (#PCDATA)>
+    <!ELEMENT phone (#PCDATA)>
+    <!ATTLIST phone type (home|work|mobile) #IMPLIED>
+]>
+
+<notebook>
+    <contact type="family">
+        <firstname>Valentin</firstname>
+        <surname>Kirilov</surname>
+        <lastname>Kirilov</lastname>
+        <address>
+            <postcode>1220</postcode>
+            <city>CITY</city>
+            <street>Street Number</street>
+        </address>
+        <birthdate>1994-10-13</birthdate>
+        <phone>123456</phone>
+        <phone type="home">123456</phone>
+        <phone type="work">123456</phone>
+        <phone type="mobile">123456</phone>
+    </contact>
+    <contact type="classmate">
+        <firstname>John</firstname>
+        <surname>Snow</surname>
+        <lastname>White</lastname>
+        <address>
+            <postcode>1220</postcode>
+            <city>CITY</city>
+            <street>Street Number</street>
+        </address>
+        <birthdate>1994-10-13</birthdate>
+    </contact>
+</notebook>
